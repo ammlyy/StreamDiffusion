@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 _deps = [
     "torch",
     "xformers",
-    "diffusers",
+    "diffusers==0.24.0",
     "transformers",
     "accelerate",
     "fire",
@@ -34,14 +34,12 @@ extras["tensorrt"] = deps_list("protobuf", "cuda-python", "onnx", "onnxruntime",
 
 extras["dev"] = extras["xformers"] + extras["torch"] + extras["tensorrt"]
 
-if os.name == "nt":
-    extras["tensorrt"] = extras["tensorrt"] + deps_list("pywin32")
-
 install_requires = [
     deps["fire"],
     deps["omegaconf"],
     deps["diffusers"],
     deps["transformers"],
+    deps["accelerate"],
 ]
 
 setup(
